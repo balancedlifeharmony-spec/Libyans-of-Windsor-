@@ -1,0 +1,1310 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Libyan Community of Windsor-Essex | الجالية الليبية في وندسور</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Tajawal:wght@300;400;500;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #006233;
+    --green-light: #00883f;
+    --green-dark: #004422;
+    --red: #d01b2a;
+    --red-light: #e8293a;
+    --red-dark: #9e1020;
+    --black: #0d0d0d;
+    --black-soft: #1a1a1a;
+    --gold: #d01b2a;
+    --gold-light: #ff4455;
+    --cream: #f5f5f5;
+    --sand: #f0f0f0;
+    --gray: #6b7280;
+    --light: #f4f4f4;
+    --white: #ffffff;
+    --shadow: 0 4px 24px rgba(0,0,0,0.12);
+    --shadow-lg: 0 12px 48px rgba(0,0,0,0.22);
+    --body-font: 'Source Sans 3', sans-serif;
+    --heading-font: 'Playfair Display', serif;
+  }
+  [lang="ar"] { --body-font: 'Tajawal', sans-serif; --heading-font: 'Tajawal', sans-serif; }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family: var(--body-font);
+    background: var(--light);
+    color: #111;
+    overflow-x: hidden;
+    transition: font-family 0.2s;
+  }
+
+  /* ===== LANGUAGE TOGGLE ===== */
+  .lang-toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 2px solid var(--green);
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    padding: 7px 14px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
+    font-family: var(--body-font);
+  }
+  .lang-btn.active { background: var(--green); color: white; }
+  .lang-btn:not(.active) { color: var(--green); background: white; }
+  .lang-btn:not(.active):hover { background: var(--sand); }
+
+  /* ===== TOP BAR ===== */
+  .top-bar {
+    background: #000000;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.78rem;
+    padding: 6px 0;
+    letter-spacing: 0.02em;
+  }
+  .top-bar-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;
+  }
+  .top-bar a { color: #ff6670; text-decoration: none; }
+  .top-bar a:hover { text-decoration: underline; }
+
+  /* ===== HEADER ===== */
+  header {
+    background: var(--white);
+    border-bottom: 3px solid var(--red);
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: var(--shadow);
+  }
+  .header-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 12px;
+  }
+  .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; cursor:pointer; }
+  .logo-emblem {
+    width: 52px; height: 36px; border-radius: 4px; overflow: hidden;
+    display: flex; flex-direction: column; flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  }
+  .logo-emblem::before { display:none; }
+  .flag-stripe-blk { background: #000000; flex: 1; }
+  .flag-stripe-red { background: #d01b2a; flex: 1; position: relative; display: flex; align-items: center; justify-content: center; }
+  .flag-stripe-red::after { content: '☪'; color: white; font-size: 0.7rem; line-height: 1; }
+  .flag-stripe-grn { background: #006233; flex: 1; }
+  .logo-text h1 { font-family: var(--heading-font); font-size: 1rem; font-weight: 700; color: var(--black-soft,#1a1a1a); line-height: 1.2; }
+  .logo-text p { font-size: 0.7rem; color: var(--gray); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  nav { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; }
+  nav button {
+    background: none; border: none; padding: 7px 11px;
+    font-family: var(--body-font); font-size: 0.82rem; font-weight: 600;
+    color: #111; cursor: pointer; border-radius: 6px; transition: all 0.2s; white-space: nowrap;
+  }
+  nav button:hover, nav button.active { background: var(--green); color: white; }
+  .header-right { display: flex; align-items: center; gap: 10px; }
+  .mobile-menu-btn {
+    display: none; background: none; border: 2px solid var(--green);
+    color: var(--green); padding: 7px 12px; border-radius: 6px; cursor: pointer; font-size: 1.2rem;
+  }
+
+  /* ===== PAGES ===== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #0d0d0d 0%, #1a1a1a 35%, #006233 70%, #00883f 100%);
+    color: white; padding: 80px 24px 64px; position: relative; overflow: hidden;
+    min-height: 500px; display: flex; align-items: center;
+  }
+  .hero::before {
+    content: '☪'; position: absolute; right: -40px; top: 50%; transform: translateY(-50%);
+    font-size: 30rem; opacity: 0.05; line-height: 1; pointer-events: none;
+  }
+  [dir="rtl"] .hero::before { right: auto; left: -40px; }
+  .hero-content {
+    max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .hero h2 { font-family: var(--heading-font); font-size: 3rem; font-weight: 900; line-height: 1.1; margin-bottom: 16px; }
+  .hero h2 span { color: #ff4455; }
+  .hero p { font-size: 1.05rem; line-height: 1.75; opacity: 0.9; margin-bottom: 28px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { padding: 12px 26px; border-radius: 8px; font-family: var(--body-font); font-weight: 600; font-size: 0.93rem; border: none; cursor: pointer; transition: all 0.25s; text-decoration: none; display: inline-block; }
+  .btn-gold { background: var(--red); color: #fff; }
+  .btn-gold:hover { background: var(--red-light); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.5); }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+  .btn-green { background: var(--green); color: white; }
+  .btn-green:hover { background: var(--green-dark); transform: translateY(-2px); }
+
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat-card {
+    background: rgba(255,255,255,0.12); backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 20px; text-align: center;
+  }
+  .stat-card .num { font-family: var(--heading-font); font-size: 2.2rem; font-weight: 900; color: #ff4455; line-height: 1; margin-bottom: 6px; }
+  .stat-card .label { font-size: 0.8rem; opacity: 0.85; letter-spacing: 0.03em; }
+
+  /* ===== WEATHER ===== */
+  .weather-widget {
+    background: linear-gradient(135deg, #1a3a5c, #2a5298);
+    color: white; border-radius: 14px; padding: 20px; text-align: center;
+  }
+  .weather-widget h3 { font-size: 0.8rem; opacity: 0.75; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  .weather-temp { font-family: var(--heading-font); font-size: 3rem; font-weight: 900; line-height: 1; }
+  .weather-temp sup { font-size: 1.4rem; vertical-align: super; }
+  .weather-city { font-size: 1rem; font-weight: 600; margin: 6px 0 4px; }
+  .weather-desc { font-size: 0.85rem; opacity: 0.8; margin-bottom: 12px; }
+  .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 0.78rem; }
+  .weather-item { background: rgba(255,255,255,0.1); border-radius: 7px; padding: 7px; }
+  .weather-note { font-size: 0.7rem; opacity: 0.55; margin-top: 10px; }
+
+  /* ===== SECTION ===== */
+  .section { max-width: 1200px; margin: 0 auto; padding: 60px 24px; }
+  .section-header { text-align: center; margin-bottom: 44px; }
+  [dir="rtl"] .section-header { text-align: center; }
+  .tag {
+    display: inline-block; background: var(--sand); color: var(--green-dark);
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; border: 1px solid var(--red);
+  }
+  .section-header h2 { font-family: var(--heading-font); font-size: 2.3rem; font-weight: 700; color: var(--green-dark); line-height: 1.2; margin-bottom: 10px; }
+  .section-header p { color: var(--gray); font-size: 1rem; max-width: 580px; margin: 0 auto; line-height: 1.7; }
+  .divider { width: 56px; height: 3px; background: linear-gradient(90deg, var(--green), var(--red)); border-radius: 2px; margin: 12px auto 0; }
+
+  /* ===== INFO BANNER ===== */
+  .info-banner { background: linear-gradient(90deg, #0d0d0d, #1a1a1a 40%, var(--red-dark) 100%); color: white; padding: 14px 24px; text-align: center; font-size: 0.9rem; border-top: 3px solid var(--red); }
+  .info-banner strong { color: #ff8888; }
+
+  /* ===== TWO COL ===== */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+
+  /* ===== CARDS ===== */
+  .info-card { background: var(--white); border-radius: 12px; padding: 26px; box-shadow: var(--shadow); border-top: 3px solid var(--red); margin-bottom: 16px; }
+  .info-card h3 { font-family: var(--heading-font); font-size: 1.2rem; color: var(--green-dark); margin-bottom: 10px; }
+  .info-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.7; margin-bottom: 8px; }
+  .info-card ul { list-style: none; }
+  .info-card ul li { padding: 5px 0; font-size: 0.86rem; color: var(--gray); border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 8px; }
+  .info-card ul li:last-child { border-bottom: none; }
+  .info-card ul li span { color: var(--green); font-weight: 600; }
+
+  /* ===== ANNOUNCEMENTS ===== */
+  .announcements-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+  .ann-card { background: var(--white); border-radius: 12px; padding: 22px; border-left: 4px solid var(--green); box-shadow: var(--shadow); transition: transform 0.2s, box-shadow 0.2s; }
+  [dir="rtl"] .ann-card { border-left: none; border-right: 4px solid var(--green); }
+  .ann-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .ann-card.urgent { border-left-color: var(--red); }
+  [dir="rtl"] .ann-card.urgent { border-right-color: var(--red); border-left: none; }
+  .ann-card.event { border-left-color: var(--red); }
+  [dir="rtl"] .ann-card.event { border-right-color: var(--red); border-left: none; }
+  .ann-meta { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; }
+  .ann-badge { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 10px; border-radius: 20px; background: var(--green); color: white; }
+  .ann-card.urgent .ann-badge { background: var(--red); }
+  .ann-card.event .ann-badge { background: var(--red); color: #fff; }
+  .ann-date { font-size: 0.76rem; color: var(--gray); }
+  .ann-card h3 { font-family: var(--heading-font); font-size: 1.1rem; margin-bottom: 7px; color: var(--green-dark); }
+  .ann-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+
+  /* ===== EVENTS ===== */
+  .events-list { display: flex; flex-direction: column; gap: 18px; }
+  .event-card { background: var(--white); border-radius: 12px; padding: 22px; display: grid; grid-template-columns: 76px 1fr auto; gap: 18px; align-items: center; box-shadow: var(--shadow); transition: transform 0.2s; }
+  .event-card:hover { transform: translateX(5px); }
+  [dir="rtl"] .event-card:hover { transform: translateX(-5px); }
+  .event-date-box { background: var(--green); color: white; border-radius: 10px; text-align: center; padding: 10px 6px; }
+  .event-date-box .month { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.9; }
+  .event-date-box .day { font-family: var(--heading-font); font-size: 1.9rem; font-weight: 900; line-height: 1; }
+  .event-date-box .year { font-size: 0.68rem; opacity: 0.75; }
+  .event-info h3 { font-family: var(--heading-font); font-size: 1.15rem; margin-bottom: 4px; color: var(--green-dark); }
+  .event-info p { font-size: 0.85rem; color: var(--gray); line-height: 1.55; }
+  .event-info .location { display: flex; align-items: center; gap: 4px; font-size: 0.8rem; color: var(--green); margin-top: 6px; }
+  .event-tag { background: var(--sand); color: var(--green-dark); font-size: 0.73rem; font-weight: 600; padding: 4px 12px; border-radius: 20px; white-space: nowrap; border: 1px solid var(--red); }
+
+  /* ===== GALLERY ===== */
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; margin-bottom: 36px; }
+  .gallery-ph {
+    aspect-ratio: 4/3; background: linear-gradient(135deg, var(--sand), #e8dfc8);
+    border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    color: var(--green); font-size: 0.83rem; font-weight: 600; border: 2px dashed var(--gold);
+    cursor: pointer; transition: all 0.2s; gap: 8px;
+  }
+  .gallery-ph:hover { background: var(--green); color: white; border-color: var(--green); }
+  .gallery-ph span { font-size: 2.2rem; }
+
+  /* ===== LINKS ===== */
+  .links-section { background: #f0f0f0; padding: 60px 0; }
+  .links-group { margin-bottom: 38px; }
+  .links-group h3 { font-family: var(--heading-font); font-size: 1.25rem; color: var(--green-dark); margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid var(--green); display: flex; align-items: center; gap: 10px; }
+  .links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+  .link-card { background: var(--white); border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; text-decoration: none; color: #111; box-shadow: var(--shadow); transition: all 0.2s; border-left: 3px solid transparent; }
+  [dir="rtl"] .link-card { border-left: none; border-right: 3px solid transparent; }
+  .link-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-left-color: var(--green); color: var(--green-dark); }
+  [dir="rtl"] .link-card:hover { border-right-color: var(--green); }
+  .link-icon { font-size: 1.5rem; flex-shrink: 0; }
+  .link-card div { flex: 1; }
+  .link-card strong { display: block; font-size: 0.87rem; font-weight: 600; }
+  .link-card span { font-size: 0.76rem; color: var(--gray); }
+  .link-arrow { color: var(--green); font-size: 1rem; }
+  [dir="rtl"] .link-arrow { transform: scaleX(-1); }
+
+  /* ===== MOSQUES ===== */
+  .mosques-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 22px; }
+  .mosque-card { background: var(--white); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); transition: transform 0.2s; }
+  .mosque-card:hover { transform: translateY(-4px); }
+  .mosque-header { background: linear-gradient(135deg, #0d0d0d, var(--green-dark)); padding: 22px; color: white; text-align: center; border-bottom: 3px solid var(--red); }
+  .mosque-icon { font-size: 2.3rem; margin-bottom: 8px; }
+  .mosque-header h3 { font-family: var(--heading-font); font-size: 1.1rem; }
+  .mosque-header p { font-size: 0.9rem; opacity: 0.85; margin-top: 4px; }
+  .mosque-body { padding: 18px; }
+  .mosque-body p { font-size: 0.85rem; color: var(--gray); line-height: 1.6; margin-bottom: 6px; }
+  .mosque-body a { color: var(--green); text-decoration: none; font-size: 0.83rem; font-weight: 600; }
+
+  /* ===== ADS ===== */
+  .ads-bg { background: #0d0d0d; padding: 60px 0; border-top: 4px solid var(--red); }
+  .ads-bg .section-header h2 { color: white; }
+  .ads-bg .section-header p { color: rgba(255,255,255,0.7); }
+  .ads-bg .tag { background: var(--gold); color: #111; border-color: var(--gold); }
+  .ads-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+  .ad-ph { background: rgba(255,255,255,0.07); border: 2px dashed rgba(255,255,255,0.22); border-radius: 12px; padding: 28px 20px; text-align: center; color: rgba(255,255,255,0.55); cursor: pointer; transition: all 0.2s; min-height: 150px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+  .ad-ph:hover { background: rgba(255,255,255,0.12); border-color: var(--gold); color: var(--gold); }
+  .ad-ph .icon { font-size: 2rem; }
+  .ad-ph strong { font-size: 0.95rem; }
+  .ad-ph span { font-size: 0.78rem; }
+
+  /* ===== HISTORY ===== */
+  .history-hero {
+    background: linear-gradient(180deg, #000000, #0d0d0d 40%, #1a0a0a 70%, #2a0008 100%);
+    color: white; padding: 80px 24px; text-align: center; position: relative; overflow: hidden;
+  }
+  .history-hero::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23c9a84c' fill-opacity='0.06'%3E%3Cpolygon points='40 0 48 28 76 28 54 45 63 72 40 56 17 72 26 45 4 28 32 28'/%3E%3C/g%3E%3C/svg%3E") repeat; }
+  .history-hero-content { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
+  .history-hero h2 { font-family: var(--heading-font); font-size: 2.8rem; font-weight: 900; margin-bottom: 14px; }
+  .history-hero p { font-size: 1.05rem; opacity: 0.85; line-height: 1.75; }
+  .flag-bar { height: 7px; background: linear-gradient(90deg, #000 33.3%, #d01b2a 33.3%, #d01b2a 66.6%, #006233 66.6%); max-width: 200px; margin: 18px auto; border-radius: 4px; }
+
+  .timeline { position: relative; padding: 40px 0; }
+  .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--red), var(--green)); transform: translateX(-50%); }
+  .tl-item { display: flex; gap: 36px; margin-bottom: 44px; position: relative; align-items: flex-start; }
+  .tl-item:nth-child(odd) { flex-direction: row-reverse; }
+  .tl-item:nth-child(odd) .tl-content { text-align: right; }
+  [dir="rtl"] .tl-item:nth-child(odd) { flex-direction: row; }
+  [dir="rtl"] .tl-item:nth-child(even) { flex-direction: row-reverse; }
+  [dir="rtl"] .tl-item .tl-content { text-align: right; }
+  [dir="rtl"] .tl-item:nth-child(even) .tl-content { text-align: left; }
+  .tl-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 15px; height: 15px; background: var(--red); border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 3px var(--red); top: 8px; flex-shrink: 0; }
+  .tl-content { width: calc(50% - 36px); }
+  .tl-period { font-size: 0.73rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 5px; }
+  .tl-content h3 { font-family: var(--heading-font); font-size: 1.35rem; margin-bottom: 9px; color: var(--green-dark); }
+  .tl-content p { font-size: 0.9rem; color: var(--gray); line-height: 1.7; }
+  .era-chip { display: inline-block; background: var(--sand); border: 1px solid var(--red); color: var(--green-dark); font-size: 0.7rem; padding: 2px 10px; border-radius: 20px; margin-bottom: 7px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ===== PLACEHOLDER PAGES ===== */
+  .ph-page { min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 80px 24px; }
+  .ph-content { max-width: 580px; text-align: center; background: var(--white); border-radius: 20px; padding: 56px 36px; box-shadow: var(--shadow-lg); border-top: 4px solid var(--red); }
+  .ph-icon { font-size: 4.5rem; margin-bottom: 20px; }
+  .ph-content h2 { font-family: var(--heading-font); font-size: 1.9rem; color: var(--green-dark); margin-bottom: 10px; }
+  .ph-content p { color: var(--gray); line-height: 1.7; margin-bottom: 20px; font-size: 0.95rem; }
+  .ph-list { text-align: left; margin-bottom: 26px; list-style: none; }
+  [dir="rtl"] .ph-list { text-align: right; }
+  .ph-list li { padding: 7px 0; color: var(--gray); font-size: 0.88rem; border-bottom: 1px solid #f0f0f0; display: flex; gap: 10px; align-items: center; }
+  .ph-list li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .submit-btn { background: var(--green); color: white; border: none; padding: 13px 30px; border-radius: 10px; font-size: 0.97rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: var(--body-font); }
+  .submit-btn:hover { background: var(--green-dark); transform: translateY(-2px); }
+
+  /* ===== ARABIC QUOTE ===== */
+  .ar-quote { font-family: 'Tajawal', sans-serif; font-size: 1.5rem; text-align: center; color: var(--green-dark); line-height: 1.8; padding: 22px; background: var(--sand); border-radius: 12px; border-left: 4px solid var(--red); border-right: 4px solid var(--green); margin: 22px 0; direction: rtl; }
+  .ar-quote .translation { font-size: 0.88rem; color: var(--gray); direction: ltr; display: block; margin-top: 8px; font-family: 'Source Sans 3', sans-serif; font-style: italic; }
+
+  /* ===== QUICK BAR ===== */
+  .quick-bar { background: var(--white); border-bottom: 1px solid #e5e7eb; padding: 9px 0; }
+  .quick-bar-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
+  .qb-label { font-size: 0.75rem; color: var(--gray); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-inline-end: 4px; }
+  .quick-link { font-size: 0.75rem; color: var(--green); text-decoration: none; background: var(--sand); padding: 3px 10px; border-radius: 20px; transition: all 0.2s; white-space: nowrap; border: 1px solid transparent; }
+  .quick-link:hover { background: var(--green); color: white; }
+
+  /* ===== FOOTER ===== */
+  footer { background: #0d0d0d; color: rgba(255,255,255,0.8); padding: 56px 24px 28px; border-top: 4px solid var(--red); }
+  .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 36px; margin-bottom: 44px; }
+  .footer-brand h3 { font-family: var(--heading-font); font-size: 1.25rem; color: white; margin-bottom: 12px; }
+  .footer-brand p { font-size: 0.86rem; line-height: 1.7; margin-bottom: 12px; }
+  .footer-col h4 { font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; color: #ff6670; margin-bottom: 14px; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 7px; }
+  .footer-col ul li a { color: rgba(255,255,255,0.68); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; cursor: pointer; }
+  .footer-col ul li a:hover { color: #ff6670; }
+  .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 22px; border-top: 1px solid rgba(255,255,255,0.12); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.78rem; }
+  .footer-bottom a { color: #ff6670; text-decoration: none; }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:900px){
+    .hero-content { grid-template-columns:1fr; }
+    .hero-stats { display:none; }
+    .timeline::before { left:18px; }
+    .tl-item,.tl-item:nth-child(odd) { flex-direction:column !important; padding-left:48px; }
+    [dir="rtl"] .tl-item,[dir="rtl"] .tl-item:nth-child(odd) { padding-left:0; padding-right:48px; }
+    .tl-dot { left:18px; }
+    [dir="rtl"] .tl-dot { left:auto; right:18px; }
+    .tl-content { width:100%; text-align:left !important; }
+    [dir="rtl"] .tl-content { text-align:right !important; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .two-col { grid-template-columns:1fr; }
+    nav { display:none; }
+    nav.open { display:flex; flex-direction:column; position:absolute; top:72px; left:0; right:0; background:white; padding:12px; border-bottom:2px solid var(--green); box-shadow:var(--shadow-lg); z-index:999; }
+    .mobile-menu-btn { display:block; }
+    .hero h2 { font-size:2.1rem; }
+  }
+  @media(max-width:600px){
+    .footer-grid { grid-template-columns:1fr; }
+    .event-card { grid-template-columns:68px 1fr; }
+    .event-tag { display:none; }
+    .header-inner { height:64px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     CONTENT DATA  (all strings in EN + AR)
+     ============================================================ -->
+<script>
+const T = {
+  en: {
+    dir: "ltr",
+    lang: "en",
+    htmlLang: "en",
+    // top bar
+    topLocation: "Windsor-Essex County, Ontario, Canada",
+    topContact: "Contact Us",
+    topEmail: "info@libyanwindsor.ca",
+    topGreeting: "Welcome | مرحباً",
+    // header
+    logoLine1: "Libyan Community of Windsor-Essex",
+    logoLine2: "Ontario, Canada 🇨🇦 | Libya 🇱🇾",
+    // nav
+    navHome: "Home",
+    navAnn: "Announcements",
+    navEvents: "Events",
+    navHistory: "Libya History",
+    navGallery: "Gallery",
+    navBiz: "Businesses",
+    navPro: "Professionals",
+    navLinks: "Resources",
+    // quick bar
+    qbLabel: "Quick Links:",
+    // hero
+    heroSub: "الجالية الليبية في وندسور – أونتاريو",
+    heroH2a: "Welcome to",
+    heroH2b: "Windsor's",
+    heroH2c: "Libyan Community",
+    heroP: "A proud gathering of Libyan families, professionals, and newcomers building a vibrant life in Essex County, Ontario — where two great cultures meet and flourish.",
+    heroBtnAnn: "📢 Announcements",
+    heroBtnEvents: "📅 Upcoming Events",
+    heroBtnHist: "🏛️ Libya's History",
+    stat1num:"5,000+", stat1label:"Years of Libyan History",
+    stat2num:"400+",   stat2label:"Libyan Families in Essex",
+    stat3num:"🕌",     stat3label:"Multiple Mosques Nearby",
+    // weather
+    wTitle:"Windsor Weather",
+    wCity:"Windsor, ON",
+    wNote:"Live weather · Windsor, Ontario",
+    // banner
+    bannerEn:"New to Windsor? We're here to help you settle in. Contact our community coordinators for guidance on housing, schools, healthcare & more.",
+    // home sections
+    tagCommunity:"Our Community",
+    h2Heritage:"Rooted in Heritage, Thriving in Canada",
+    pHeritage1:"The Libyan Community of Windsor-Essex is a family-oriented organization that serves as a cultural bridge between our Libyan heritage and our Canadian home. We celebrate our identity, support one another, and contribute meaningfully to the vibrant multicultural tapestry of Essex County.",
+    pHeritage2:"From cultural celebrations and Eid gatherings to professional networking and newcomer support — we are here for every Libyan in Windsor, LaSalle, Tecumseh, and across Essex County.",
+    cardNewcomerH:"🏠 Newcomer Support",
+    cardNewcomerP:"We help newly arrived Libyans navigate the Canadian system.",
+    nc1:"Immigration & documentation guidance", nc2:"School enrollment assistance",
+    nc3:"Healthcare registration (OHIP)", nc4:"Housing resources & referrals",
+    nc5:"Employment & credential recognition",
+    cardServicesH:"🤝 Community Services",
+    cs1:"Arabic language classes for children", cs2:"Eid & religious celebration coordination",
+    cs3:"Monthly community gatherings", cs4:"Community announcement bulletin",
+    cs5:"Libyan cultural food events",
+    // announcements preview
+    tagLatest:"Latest News",
+    h2Ann:"Community Announcements",
+    pAnn:"Stay informed about what's happening in our community",
+    btnViewAll:"View All Announcements →",
+    // mosque section
+    tagMosques:"Places of Worship",
+    h2Mosques:"Local Mosques",
+    pMosques:"Mosques serving the Muslim community in Windsor-Essex",
+    mosque1name:"Windsor Islamic Association", mosque1ar:"جمعية وندسور الإسلامية",
+    mosque1addr:"📍 2575 Cabana Rd W, Windsor, ON",
+    mosque1p:"One of the largest and most established Islamic centres in Windsor-Essex, serving the Muslim community for decades.",
+    mosque1link:"Visit Website →",
+    mosque2name:"Islamic Society of Windsor", mosque2ar:"الجمعية الإسلامية في وندسور",
+    mosque2addr:"📍 Windsor, Ontario",
+    mosque2p:"Serving the Islamic community in Windsor with Friday prayers, Eid celebrations, and educational programs.",
+    mosque2link:"Contact Community",
+    mosque3name:"Al-Noor Islamic Centre", mosque3ar:"مركز النور الإسلامي",
+    mosque3addr:"📍 Windsor-Essex Area",
+    mosque3p:"Community mosque offering daily prayers, Quran classes for children, and Islamic studies programs.",
+    mosque3link:"Contact Community",
+    // announcements page
+    annPageTag:"Community Board",
+    annPageH:"Community Announcements",
+    annPageP:"Stay connected with the latest news from our community",
+    ann1badge:"Community", ann1date:"March 8, 2025",
+    ann1h:"Monthly Community Gathering — March",
+    ann1p:"Join us for our monthly gathering at the Windsor Islamic Association hall. Libyan dinner will be served. All families welcome. Please RSVP to confirm attendance.",
+    ann2badge:"Important", ann2date:"March 5, 2025",
+    ann2h:"Libyan Passport Renewal — Ottawa Embassy",
+    ann2p:"Information session about renewing Libyan passports via the Embassy of Libya in Ottawa. Bring your current passport, residence proof, and birth certificate.",
+    ann3badge:"Event", ann3date:"April 15, 2025",
+    ann3h:"Libyan Heritage Night — Annual Dinner Gala",
+    ann3p:"Annual cultural heritage dinner celebrating Libyan food, music, poetry and traditions. Family event — all ages welcome. Tickets: $30 adults / $10 children. 10% to feed the hungry.",
+    ann4badge:"Education", ann4date:"Feb 20, 2025",
+    ann4h:"Arabic Language Classes for Children",
+    ann4p:"Arabic language classes for children ages 5–15 are now enrolling for the Spring session. Classes held every Saturday morning. Limited spots — register early.",
+    ann5badge:"Sports", ann5date:"Feb 10, 2025",
+    ann5h:"Libyan Youth Soccer Team — Registration Open",
+    ann5p:"We are forming a Libyan youth soccer team for local Essex County league play. Ages 10–17. Contact community coordinators to register.",
+    ann6badge:"Welfare", ann6date:"Jan 28, 2025",
+    ann6h:"Newcomer Assistance Program",
+    ann6p:"Our volunteer team is ready to assist newly arrived Libyans with settlement services including OHIP registration, school enrollment, housing resources, and employment guidance.",
+    // ads
+    adsTag:"Advertise Here", adsH:"Community Business Ads",
+    adsP:"Reach hundreds of Libyan families across Essex County. Advertise your business or service here.",
+    adContact:"To advertise, contact us at",
+    adCharity:"10% of advertising proceeds go to feed the hungry",
+    ad1:"Halal Grocery & Market", ad2:"Real Estate Services", ad3:"Immigration Lawyer",
+    ad4:"Halal Restaurant", ad5:"Auto Services", ad6:"Pharmacy / Medical",
+    adHere:"Your Ad Here", adSub:"Contact us to advertise",
+    // events page
+    eventsTag:"Calendar", eventsH:"Upcoming Events",
+    eventsP:"Mark your calendars and join your community",
+    submitEvent:"📅 Submit an Event", submitEventP:"Have a community event? Submit it to be featured on our calendar.",
+    ev1h:"Monthly Community Gathering — March Edition",
+    ev1p:"Our beloved monthly gathering with Libyan dinner, community updates, and social time for all families. Newcomers especially welcome!",
+    ev1loc:"📍 Windsor Islamic Association Hall, Windsor, ON",
+    ev1tag:"Social",
+    ev2h:"Annual Libyan Heritage Dinner Gala",
+    ev2p:"A grand celebration of Libyan culture, featuring traditional food, music, poetry, and a cultural showcase. Fundraiser — 10% to feed the hungry.",
+    ev2loc:"📍 Ciociaro Club of Windsor, Windsor, ON",
+    ev2tag:"Cultural",
+    ev3h:"Ramadan Iftar Community Dinner",
+    ev3p:"Join us for a community Iftar during the blessed month of Ramadan. Open to all Muslim families and friends in Essex County.",
+    ev3loc:"📍 Community Hall, Windsor, ON",
+    ev3tag:"Religious",
+    ev4h:"Newcomer Welcome Orientation Session",
+    ev4p:"A structured session to welcome new Libyan arrivals to Windsor. Services, resources, and community network introduction.",
+    ev4loc:"📍 Windsor Public Library, Windsor, ON",
+    ev4tag:"Community",
+    ev5h:"Libyan Youth Summer Soccer Tournament",
+    ev5p:"Annual youth soccer tournament for Libyan families in Essex County. Open to ages 8–18. Register through community coordinators.",
+    ev5loc:"📍 Vollmer Culture + Recreation Complex, LaSalle, ON",
+    ev5tag:"Sports",
+    ev6h:"Canada Day Community Picnic",
+    ev6p:"Celebrate Canada Day with your Libyan community family! Picnic, games, music, and fireworks. Representing our proud Canadian-Libyan identity.",
+    ev6loc:"📍 Dieppe Park, Windsor, ON (Waterfront)",
+    ev6tag:"National",
+    ev7h:"Libyan Independence Anniversary Commemoration",
+    ev7p:"Marking Libyan independence — a reflection on Libya's history, its people, and hope for a peaceful future. Cultural performances and community dinner.",
+    ev7loc:"📍 To be announced, Windsor-Essex",
+    ev7tag:"Heritage",
+    // history
+    histTag:"Timeline", histH:"5,000 Years of Libyan History",
+    histP:"Libya sits at the crossroads of civilizations — a land that has shaped and been shaped by the greatest empires in history",
+    histSub:"A Journey Through the Ages",
+    histSubP:"From the ancient Berber kingdoms to the glory of the Islamic Caliphate and modern Libya — five millennia of civilization",
+    tl:[
+      {era:"~8000 BCE", period:"The Ancient Berber People", h:"The Indigenous Amazigh (Berber) Civilization", p:"The original inhabitants of Libya — the Amazigh (Berbers) — settled in North Africa over 8,000 years ago, leaving behind extraordinary rock art in the Fezzan desert and establishing one of the oldest continuous cultures in human history. They called their land 'Tamazgha.'"},
+      {era:"~1000 BCE", period:"Phoenician Traders", h:"Phoenician Colonies & Mediterranean Trade", p:"Around 1000 BCE, Phoenician traders from modern-day Lebanon established colonies along Libya's coast, founding the cities of Oea (Tripoli), Sabratha, and Leptis Magna — thriving centres of Mediterranean commerce."},
+      {era:"~630 BCE", period:"Greek Civilization", h:"The Greek City-State of Cyrene", p:"Greek colonists founded Cyrene in eastern Libya around 630 BCE. The city became renowned for philosophy, medicine, and culture — home to Eratosthenes, who first calculated the Earth's circumference. The region became known as Cyrenaica."},
+      {era:"146 BCE – 193 CE", period:"Roman Empire", h:"Leptis Magna — Jewel of the Roman Empire", p:"Under Roman rule, Libya flourished as one of the most prosperous provinces of the Empire. Leptis Magna, birthplace of Emperor Septimius Severus, became one of the greatest cities in the ancient world — now a UNESCO World Heritage Site."},
+      {era:"400 – 642 CE", period:"Byzantine & Vandal Periods", h:"Byzantine Christianity in North Africa", p:"Following Rome's decline, Libya experienced Vandal rule (429–533 CE) followed by the Byzantine Empire. Christian communities thrived and produced notable early scholars during this period."},
+      {era:"642 CE", period:"The Islamic Conquest", h:"The Dawn of Islam in Libya", p:"In 642 CE, Arab Muslim armies brought Islam to Libya. The Berber population embraced the faith, and Libya became part of the Islamic Caliphate. Arabic became the dominant language, and Libya developed as a centre of Islamic scholarship, trade, and Sufi spirituality."},
+      {era:"1551 – 1911", period:"Ottoman Empire", h:"Ottoman Libya — The Karamanli Dynasty", p:"The Ottoman Empire captured Tripoli in 1551. The Karamanli dynasty governed Libya as a semi-autonomous region. Tripoli became a hub for Mediterranean trade, and Libya's strategic coastal position made it pivotal for over 360 years."},
+      {era:"1911 – 1943", period:"Italian Colonization", h:"Libyan Resistance & Italian Occupation", p:"Italy invaded Libya in 1911. The Libyan people resisted fiercely under the legendary Omar Mukhtar — 'The Lion of the Desert' — who led the resistance until his execution in 1931. He remains a towering symbol of Libyan courage and national identity."},
+      {era:"1951", period:"Independence", h:"The United Kingdom of Libya — Independence!", p:"On December 24, 1951, Libya became the first African country to gain independence through the United Nations. King Idris I became head of state. Libya's story of independence is one of the most remarkable in African history."},
+      {era:"1959 – 1969", period:"Oil Discovery", h:"Black Gold — Libya's Oil Boom", p:"The discovery of massive oil reserves in 1959 transformed Libya from one of the world's poorest nations into one of Africa's wealthiest, funding hospitals, schools, roads, and making Tripoli a modern capital city."},
+      {era:"1969 – 2011", period:"The Gaddafi Era", h:"Four Decades Under Muammar Gaddafi", p:"In September 1969, Colonel Gaddafi led a military coup. His 42-year rule was marked by vast oil wealth, social programs, pan-Arabism, and regional influence — alongside authoritarian governance and international tensions."},
+      {era:"2011 – Present", period:"The Arab Spring & Modern Libya", h:"Revolution, Transition & Hope for the Future", p:"The 2011 revolution ended the Gaddafi era. Libya entered a complex transition. Despite ongoing challenges, the Libyan people — including those in our Windsor community — hold deep hope and love for their homeland, working toward a unified and peaceful Libya."}
+    ],
+    histQuote:"Libya is a land of history, civilization, and dignity — its people carry a heritage five thousand years strong.",
+    histUnesco:"🏛️ UNESCO World Heritage Sites in Libya: Leptis Magna · Sabratha · Cyrene · Ghadames · Tadrart Acacus",
+    // gallery
+    galleryTag:"Photos & Media", galleryH:"Community Gallery",
+    galleryP:"Memories, moments, and milestones of our community",
+    galleryNote:"📸 Gallery Coming Soon — Photos will be added as our community grows",
+    gallerySubmit:"Submit your community event photos to info@libyanwindsor.ca",
+    gallerySec1:"Community Events", gallerySec2:"Libya — Our Homeland 🇱🇾",
+    gphs:["Community Gathering","Heritage Night","Eid Celebration","Family Picnic","Cultural Food","Youth Activities","Arabic Classes","Community Meeting"],
+    gphs2:["Leptis Magna Ruins","Tripoli Old City","Sahara Desert Fezzan","Mediterranean Coast","Ghadames Old Town","Cyrene Ruins","Green Mountains","Libyan Architecture"],
+    // businesses
+    bizIcon:"🏪", bizH:"Libyan Businesses in South-Western Ontario",
+    bizP:"This section will showcase Libyan-owned businesses across Windsor-Essex, Chatham-Kent, and South-Western Ontario — from restaurants and retail to professional services.",
+    bizItems:["Halal restaurants & food businesses","Real estate & construction companies","Retail & e-commerce stores","Professional service firms","Technology & consulting businesses","Healthcare & wellness providers","Transportation & logistics","Educational services"],
+    bizBtn:"📋 Submit Your Business Listing",
+    bizNote:"Free listings for Libyan community members",
+    // professionals
+    proIcon:"👨‍⚕️", proH:"Libyan Professionals Directory",
+    proP:"Connect with talented Libyan professionals across Essex County — doctors, engineers, lawyers, educators, and entrepreneurs building Canada's future.",
+    proItems:["Medical doctors & healthcare professionals","Engineers & architects","Lawyers & legal professionals","Educators & academics","Accountants & financial advisors","IT & technology professionals","Scientists & researchers","Entrepreneurs & business leaders"],
+    proBtn:"👤 Submit Your Professional Profile",
+    proNote:"Connecting Libyan talent with opportunities across Canada",
+    // resources
+    linksTag:"Resources", linksH:"Government & Community Resources",
+    linksP:"Useful links for community members in Windsor-Essex",
+    lg1:"🍁 Canadian Federal Government",
+    lg2:"🔵 Province of Ontario",
+    lg3:"🏙️ Local Municipal Governments",
+    lg4:"🇱🇾 Libyan & Diplomatic Links",
+    lg5:"🕌 Mosques & Islamic Centres",
+    lg6:"🎓 Education & Settlement Services",
+    // footer
+    footerBrandH:"Libyan Community of Windsor-Essex",
+    footerBrandP:"A proud community of Libyan families building meaningful lives in Essex County, Ontario — celebrating our heritage while embracing our Canadian home.",
+    footerCharity:"10% of all proceeds & advertising revenue go to feed the hungry",
+    footerNav:"Quick Links", footerGov:"Government", footerContact:"Contact Us",
+    footerCopy:"© 2025 Libyan Community of Windsor-Essex, Ontario. All rights reserved.",
+    footerBuilt:"Built with ❤️ for the Libyan community in Canada 🇨🇦 🇱🇾",
+    footerPowered:"Powered by Victory Hour Multimedia Inc.",
+  },
+  ar: {
+    dir: "rtl",
+    lang: "ar",
+    htmlLang: "ar",
+    topLocation: "مقاطعة وندسور-إيسكس، أونتاريو، كندا",
+    topContact: "اتصل بنا",
+    topEmail: "info@libyanwindsor.ca",
+    topGreeting: "Welcome | مرحباً بكم",
+    logoLine1: "الجالية الليبية في وندسور-إيسكس",
+    logoLine2: "أونتاريو، كندا 🇨🇦 | ليبيا 🇱🇾",
+    navHome: "الرئيسية",
+    navAnn: "الإعلانات",
+    navEvents: "الفعاليات",
+    navHistory: "تاريخ ليبيا",
+    navGallery: "معرض الصور",
+    navBiz: "الأعمال والتجارة",
+    navPro: "المهنيون والكفاءات",
+    navLinks: "روابط مفيدة",
+    qbLabel: "وصول سريع:",
+    heroSub: "Libyan Community of Windsor — Ontario",
+    heroH2a: "مرحباً بكم في",
+    heroH2b: "جاليتنا الليبية",
+    heroH2c: "في وندسور",
+    heroP: "نحن عائلة واحدة — ليبيون نعيش ونعمل في مقاطعة إيسكس، أونتاريو، نفخر بأصلنا ونبني مستقبلنا في كندا. هنا تجد أهلك وتحس بالدفا.",
+    heroBtnAnn: "📢 آخر الأخبار",
+    heroBtnEvents: "📅 شو في البرنامج؟",
+    heroBtnHist: "🏛️ تاريخ ليبيا",
+    stat1num:"5,000+", stat1label:"سنة من عمر ليبيا",
+    stat2num:"400+",   stat2label:"عائلة ليبية في المنطقة",
+    stat3num:"🕌",     stat3label:"مساجد قريبة منك",
+    wTitle:"الجو في وندسور",
+    wCity:"وندسور، أونتاريو",
+    wNote:"أحوال الطقس الآن · وندسور",
+    bannerEn:"وصلت جديد لوندسور؟ إحنا معاك — تواصل معنا ونساعدك تستقر وتلقى طريقك في المدرسة والصحة والسكن وكل شي.",
+    tagCommunity:"عن جاليتنا",
+    h2Heritage:"من ليبيا إلى كندا — أصل ما يتغيّر",
+    pHeritage1:"جالية وندسور-إيسكس الليبية بيت لكل ليبي في المنطقة. نجتمع على المحبة والأصالة، نحافظ على هويتنا ودين أجدادنا، ونساهم في بناء مجتمع كندي متنوع وقوي.",
+    pHeritage2:"من عيد الفطر والأضحى إلى أمسيات الأكل الليبي وبرامج الأطفال — إحنا هنا لكل ليبي سواء في وندسور أو لاسال أو تيكومزيه أو أي مكان في مقاطعة إيسكس.",
+    cardNewcomerH:"🏠 خاص بالوافدين الجدد",
+    cardNewcomerP:"لو وصلت جديد، كل شي بيتحل — إحنا نمشي معاك خطوة بخطوة.",
+    nc1:"مساعدة في ملفات الهجرة والأوراق الرسمية", nc2:"تسجيل الأبناء في المدارس",
+    nc3:"التسجيل في تأمين الصحة OHIP", nc4:"إيجاد السكن والمساعدة فيه",
+    nc5:"البحث عن شغل والاعتراف بالشهادات",
+    cardServicesH:"🤝 خدمات الجالية",
+    cs1:"حصص عربي للأطفال كل سبت", cs2:"تنظيم فعاليات العيد والمناسبات",
+    cs3:"تجمع شهري للعائلات", cs4:"لوحة إعلانات الجالية",
+    cs5:"أكلات ليبية وفعاليات ثقافية",
+    tagLatest:"جديد عندنا",
+    h2Ann:"إعلانات الجالية",
+    pAnn:"كل شي يصير في مجتمعنا — هنا تعرف أول",
+    btnViewAll:"شوف كل الإعلانات ←",
+    tagMosques:"المساجد القريبة",
+    h2Mosques:"مساجدنا في وندسور-إيسكس",
+    pMosques:"أقرب المساجد لأهلنا في المنطقة",
+    mosque1name:"جمعية وندسور الإسلامية", mosque1ar:"Windsor Islamic Association",
+    mosque1addr:"📍 2575 Cabana Rd W, Windsor, ON",
+    mosque1p:"من أعرق وأكبر المراكز الإسلامية في المنطقة. تخدم الجالية المسلمة منذ عقود وتضم مسجداً ومركزاً اجتماعياً وبرامج تعليمية.",
+    mosque1link:"زور موقعهم ←",
+    mosque2name:"الجمعية الإسلامية في وندسور", mosque2ar:"Islamic Society of Windsor",
+    mosque2addr:"📍 وندسور، أونتاريو",
+    mosque2p:"تقيم صلاة الجمعة واحتفالات الأعياد وحلقات تحفيظ القرآن. مرحب بالجميع.",
+    mosque2link:"تواصل مع الجالية",
+    mosque3name:"مركز النور الإسلامي", mosque3ar:"Al-Noor Islamic Centre",
+    mosque3addr:"📍 منطقة وندسور-إيسكس",
+    mosque3p:"مسجد أهل الحي — صلوات يومية وحصص قرآن للصغار ودروس دينية للكبار.",
+    mosque3link:"تواصل مع الجالية",
+    annPageTag:"لوحة الإعلانات",
+    annPageH:"أخبار وإعلانات الجالية",
+    annPageP:"كل ما يخص مجتمعنا — في مكان واحد",
+    ann1badge:"مجتمع", ann1date:"٨ مارس ٢٠٢٥",
+    ann1h:"لقاؤنا الشهري — مارس",
+    ann1p:"يسعدنا نشوف وجوهكم في لقاؤنا الشهري بقاعة جمعية وندسور الإسلامية. في عشاء ليبي وسهرة حلوة. كل العائلات مدعوة، بس يا ريت تأكدوا حضوركم مسبقاً.",
+    ann2badge:"مهم", ann2date:"٥ مارس ٢٠٢٥",
+    ann2h:"تجديد جوازات السفر الليبية — سفارة أوتاوا",
+    ann2p:"جلسة تعريفية بإجراءات تجديد الجواز الليبي عن طريق سفارة ليبيا في أوتاوا. جيب معاك جوازك وإثبات إقامتك وشهادة ميلادك.",
+    ann3badge:"فعالية", ann3date:"١٥ أبريل ٢٠٢٥",
+    ann3h:"ليلة التراث الليبي — السهرة السنوية الكبيرة",
+    ann3p:"سهرة سنوية نحتفل فيها بكل ما هو ليبي — أكل وموسيقى وشعر وضحكات. للعائلات والكبار والصغار. التذاكر: ٣٠ دولار للكبار و١٠ دولارات للأطفال. ١٠٪ من العائدات لإطعام المحتاجين.",
+    ann4badge:"تعليم", ann4date:"٢٠ فبراير ٢٠٢٥",
+    ann4h:"حصص عربي للأطفال — باب التسجيل مفتوح",
+    ann4p:"ابدأ تسجيل أبناءك في حصص اللغة العربية للفصل الربيعي. الأعمار من ٥ إلى ١٥ سنة، كل سبت صباحاً. الأماكن محدودة فبادر بالتسجيل.",
+    ann5badge:"رياضة", ann5date:"١٠ فبراير ٢٠٢٥",
+    ann5h:"فريق كرة قدم الشباب الليبي — سجّل الآن",
+    ann5p:"نشكّل فريق كرة قدم للشباب الليبي في دوري مقاطعة إيسكس المحلي. الأعمار من ١٠ إلى ١٧ سنة. تواصل مع منسقي الجالية للتسجيل.",
+    ann6badge:"دعم اجتماعي", ann6date:"٢٨ يناير ٢٠٢٥",
+    ann6h:"برنامج استقبال الوافدين الجدد",
+    ann6p:"فريق متطوعين جاهز يساعدك من اليوم الأول — تسجيل OHIP، المدارس، السكن، الشغل. ما راح تمشي لحالك.",
+    adsTag:"أعلن معنا", adsH:"إعلانات الجالية التجارية",
+    adsP:"وصّل خدمتك أو منتجك لمئات العائلات الليبية في مقاطعة إيسكس. مساحتك الإعلانية هنا.",
+    adContact:"للإعلان راسلنا على",
+    adCharity:"١٠٪ من عائدات الإعلانات لإطعام المحتاجين",
+    ad1:"بقالة ومواد غذائية حلال", ad2:"خدمات عقارية وإسكان", ad3:"محامٍ متخصص في الهجرة",
+    ad4:"مطعم حلال", ad5:"ميكانيك وخدمات السيارات", ad6:"صيدلية وخدمات طبية",
+    adHere:"مساحتك الإعلانية", adSub:"تواصل معنا للحجز",
+    eventsTag:"ما في البرنامج", eventsH:"الفعاليات القادمة",
+    eventsP:"دوّن المواعيد وكن من أول الحاضرين",
+    submitEvent:"📅 أضف فعاليتك", submitEventP:"عندك فعالية مجتمعية؟ أرسلها ونحطها في التقويم.",
+    ev1h:"لقاؤنا الشهري — مارس",
+    ev1p:"لقاؤنا الشهري الذي ننتظره دايماً — عشاء ليبي دافئ، أخبار الجالية، وسهرة مع الأهل والجيران. الوافدون الجدد أهلاً وسهلاً بهم بشكل خاص!",
+    ev1loc:"📍 قاعة جمعية وندسور الإسلامية",
+    ev1tag:"اجتماعي",
+    ev2h:"سهرة التراث الليبي السنوية",
+    ev2p:"سهرة الكبيرة كل سنة — مأكولات ليبية أصيلة، موسيقى، شعر، وفقرات ثقافية لا تنسى. جزء من العائدات لإطعام المحتاجين.",
+    ev2loc:"📍 Ciociaro Club of Windsor",
+    ev2tag:"ثقافي",
+    ev3h:"إفطار رمضاني جماعي",
+    ev3p:"على بركة الله، نجتمع على مائدة الإفطار في رمضان الكريم. مفتوح لجميع العائلات المسلمة وأصدقائنا في إيسكس.",
+    ev3loc:"📍 قاعة المجتمع، وندسور",
+    ev3tag:"ديني",
+    ev4h:"استقبال الوافدين الجدد",
+    ev4p:"لقاء خاص لاستقبال كل من وصل جديد لوندسور. تعرّف على الجالية واكتشف الخدمات والموارد المتاحة لك.",
+    ev4loc:"📍 مكتبة وندسور العامة",
+    ev4tag:"مجتمع",
+    ev5h:"بطولة كرة القدم الصيفية للشباب",
+    ev5p:"بطولة سنوية للشباب الليبي من ٨ إلى ١٨ سنة. سجّل فريقك مبكراً — الأماكن تمتلئ بسرعة.",
+    ev5loc:"📍 Vollmer Culture + Recreation Complex, LaSalle",
+    ev5tag:"رياضة",
+    ev6h:"نزهة يوم كندا",
+    ev6p:"نحتفل بيوم كندا مع بعض — نزهة وأكل وألعاب وموسيقى وألعاب نارية. نحن كنديون وليبيون بالقلب.",
+    ev6loc:"📍 ديب بارك، وندسور (على الكورنيش)",
+    ev6tag:"وطني",
+    ev7h:"ذكرى استقلال ليبيا",
+    ev7p:"نحيي ذكرى استقلال وطننا الحبيب — أمسية ثقافية وتاريخية ودعاء لليبيا بالخير والسلام. فعاليات وعشاء مجتمعي.",
+    ev7loc:"📍 سيُعلَن لاحقاً، وندسور-إيسكس",
+    ev7tag:"تراث",
+    histTag:"المحطات التاريخية", histH:"٥٠٠٠ سنة من عمر ليبيا",
+    histP:"ليبيا ملتقى الحضارات — على أرضها مشى الأمازيغ والفينيقيون والإغريق والرومان والعرب. كل واحد ترك بصمة.",
+    histSub:"رحلة في الزمن",
+    histSubP:"من الكهوف الصخرية في فزان إلى قباب لبدة الكبرى، ومن فتح الإسلام إلى استقلال ١٩٥١ — هذا تاريخنا",
+    tl:[
+      {era:"~٨٠٠٠ ق.م", period:"الأمازيغ — أصل الأصول", h:"الأمازيغ: أبناء ليبيا الأوائل", p:"قبل ثمانية آلاف سنة كان الأمازيغ (البربر) يعيشون على هذه الأرض، يرسمون على صخور فزان ويبنون ثقافة ما انقطعت. سمّوا بلادهم 'تامازغا'. جذورنا الليبية منهم."},
+      {era:"~١٠٠٠ ق.م", period:"الفينيقيون", h:"الفينيقيون يبنون المدن الثلاث", p:"جاء التجار الفينيقيون من بلاد الشام وأسسوا مدن الساحل الليبي: أويا (طرابلس) وصبراتة ولبدة الكبرى. صارت هذه المدن الثلاث أعمدة التجارة في البحر المتوسط."},
+      {era:"~٦٣٠ ق.م", period:"الإغريق", h:"قيرينا — عاصمة الفكر القديم", p:"أسس الإغريق مدينة قيرينا في الشرق الليبي وجعلوها مركزاً للفلسفة والطب. من هنا خرج إراتوستينيس الذي قاس محيط الأرض لأول مرة في التاريخ. المنطقة صارت تُعرف بقيرينائيكا."},
+      {era:"١٤٦ ق.م – ١٩٣م", period:"الرومان", h:"لبدة الكبرى — درّة الإمبراطورية الرومانية", p:"تحت الحكم الروماني ازدهرت ليبيا وصارت من أغنى الولايات. لبدة الكبرى، مسقط رأس الإمبراطور سبتيموس سيفيروس، بُنيت فيها قواطيس وأسواق ومعابد لا تزال قائمة حتى اليوم. مدرجة الآن في قائمة اليونسكو للتراث العالمي."},
+      {era:"٤٠٠ – ٦٤٢م", period:"البيزنطيون والوندال", h:"بين الوندال والبيزنطيين", p:"بعد انهيار روما جاء الوندال (٤٢٩–٥٣٣م) ثم عاد البيزنطيون. ازدهرت المجتمعات المسيحية وأنتجت علماء بارزين. كانت ليبيا دائماً ملتقى حضارات."},
+      {era:"٦٤٢م", period:"الفتح الإسلامي", h:"دخول الإسلام — تحوّل كبير", p:"عام ٦٤٢م دخل الإسلام إلى ليبيا مع جيوش عمرو بن العاص. احتضن الأمازيغ الدين الجديد وأصبحت العربية لسان البلاد. صارت ليبيا مركزاً للعلم الإسلامي والتجارة والتصوف على مدى قرون."},
+      {era:"١٥٥١ – ١٩١١", period:"العثمانيون", h:"ليبيا تحت الحكم العثماني", p:"دخل العثمانيون طرابلس عام ١٥٥١. حكمت أسرة القرمانلي ليبيا بشبه استقلال لفترات طويلة. كانت طرابلس مركزاً تجارياً مهماً وظلت ليبيا حلقة وصل في المتوسط لأكثر من ثلاثة قرون."},
+      {era:"١٩١١ – ١٩٤٣", period:"المقاومة ضد الاستعمار الإيطالي", h:"عمر المختار — أسد الصحراء", p:"غزت إيطاليا ليبيا عام ١٩١١ وكان الاحتلال وحشياً. قاوم الليبيون بكل ما عندهم، وعلى رأسهم الشيخ عمر المختار الذي قاد المقاومة سنوات طويلة حتى اعتقاله وإعدامه عام ١٩٣١. اسمه محفور في ضمير كل ليبي."},
+      {era:"١٩٥١", period:"الاستقلال", h:"٢٤ ديسمبر ١٩٥١ — يوم لا يُنسى", p:"في هذا التاريخ أعلنت ليبيا استقلالها وصارت أول دولة أفريقية تنال استقلالها عبر الأمم المتحدة. الملك إدريس الأول على رأس الدولة الفتية. كانت ليبيا وقتها من أفقر دول العالم — لكن القصة لم تنته هنا."},
+      {era:"١٩٥٩ – ١٩٦٩", period:"اكتشاف النفط", h:"النفط يغير كل شي", p:"عام ١٩٥٩ اكتُشف النفط بكميات ضخمة. بنيت المستشفيات والمدارس والطرق. طرابلس تحولت لعاصمة عصرية. ليبيا انتقلت من أفقر الدول لأغناها في سنوات معدودة."},
+      {era:"١٩٦٩ – ٢٠١١", period:"حقبة القذافي", h:"اثنان وأربعون سنة — حقبة مثيرة للجدل", p:"سبتمبر ١٩٦٩، انقلاب عسكري بقيادة معمر القذافي. اثنان وأربعون سنة من الحكم — ثروة نفطية وبرامج اجتماعية وقومية عربية من جهة، وحكم استبدادي وعزلة دولية من جهة أخرى. صفحة معقدة في تاريخنا."},
+      {era:"٢٠١١ – الحاضر", period:"الثورة وما بعدها", h:"ثورة فبراير والطريق إلى الأمام", p:"ثورة ٢٠١١ أسقطت نظام القذافي وفتحت صفحة جديدة لم تكتمل بعد. ليبيا تمر بمرحلة انتقالية صعبة، لكن شعبها — في الداخل وفي المهجر — لا يزال يحمل الأمل ويشتاق ليوم ليبيا الموحدة والآمنة."}
+    ],
+    histQuote:"ليبيا في القلب — مهما بعُدنا عنها، نبقى أبناءها.",
+    histUnesco:"🏛️ مواقع ليبيا في قائمة اليونسكو: لبدة الكبرى · صبراتة · قيرينا · غدامس · تدرارت أكاكوس",
+    // gallery
+    galleryTag:"صورنا وذكرياتنا", galleryH:"معرض صور الجالية",
+    galleryP:"لحظات من حياتنا المشتركة — هنا وهناك",
+    galleryNote:"📸 المعرض قريباً — ترسل صورك وإحنا نحطها",
+    gallerySubmit:"أرسل صور الفعاليات على info@libyanwindsor.ca",
+    gallerySec1:"من فعاليات الجالية", gallerySec2:"ليبيا في القلب 🇱🇾",
+    gphs:["لقاء شهري","سهرة التراث","احتفال العيد","نزهة عائلية","أكل ليبي","فعاليات الشباب","حصص العربية","اجتماع الجالية"],
+    gphs2:["آثار لبدة الكبرى","مدينة طرابلس العتيقة","صحراء فزان","شواطئ المتوسط","مدينة غدامس","آثار قيرينا","الجبل الأخضر","عمارة ليبية أصيلة"],
+    // businesses
+    bizIcon:"🏪", bizH:"أعمال ليبية في جنوب غرب أونتاريو",
+    bizP:"قريباً ستجد هنا دليلاً شاملاً لكل الأعمال والمشاريع التي يديرها أبناء الجالية الليبية في وندسور-إيسكس وما حولها. من المطاعم والمحلات إلى الشركات والخدمات المهنية.",
+    bizItems:["مطاعم ومحلات أكل حلال","مشاريع عقارية وإنشائية","محلات تجزئة وتجارة إلكترونية","شركات خدمات متخصصة","مشاريع تقنية واستشارية","عيادات ومراكز صحية","نقل وخدمات لوجستية","مراكز تعليم وتدريب"],
+    bizBtn:"📋 سجّل مشروعك معنا",
+    bizNote:"الإدراج مجاني لأبناء الجالية الليبية",
+    // professionals
+    proIcon:"👨‍⚕️", proH:"دليل الكفاءات والمهنيين الليبيين",
+    proP:"أطباء ومهندسون ومحامون ومعلمون ورجال أعمال — أبناؤنا يبنون كندا ويفخرون بأصلهم الليبي. سجّل اسمك في دليل كفاءات الجالية.",
+    proItems:["أطباء ومتخصصو صحة","مهندسون ومعماريون","محامون ومستشارون قانونيون","معلمون وأكاديميون وباحثون","محاسبون ومستشارون ماليون","متخصصو تقنية معلومات وبرمجة","علماء وباحثون في الجامعات","رجال أعمال وأصحاب مشاريع"],
+    proBtn:"👤 سجّل ملفك المهني",
+    proNote:"نربط كفاءاتنا الليبية بالفرص في كندا وليبيا",
+    // resources
+    linksTag:"روابط مفيدة", linksH:"الحكومة والموارد المجتمعية",
+    linksP:"كل الروابط اللي تحتاجها في مكان واحد",
+    lg1:"🍁 الحكومة الفيدرالية الكندية",
+    lg2:"🔵 حكومة مقاطعة أونتاريو",
+    lg3:"🏙️ البلديات المحلية",
+    lg4:"🇱🇾 السفارات والجهات الدبلوماسية",
+    lg5:"🕌 المساجد والمراكز الإسلامية",
+    lg6:"🎓 التعليم وخدمات الاستقرار",
+    // footer
+    footerBrandH:"الجالية الليبية في وندسور-إيسكس",
+    footerBrandP:"بيت كل ليبي في مقاطعة إيسكس — نحتفل بأصلنا ونبني مستقبلنا معاً في كندا الجميلة.",
+    footerCharity:"١٠٪ من كل عائداتنا لإطعام المحتاجين",
+    footerNav:"تصفح الموقع", footerGov:"روابط حكومية", footerContact:"تواصل معنا",
+    footerCopy:"© ٢٠٢٥ الجالية الليبية في وندسور-إيسكس، أونتاريو. جميع الحقوق محفوظة.",
+    footerBuilt:"صُنع بـ ❤️ لأبناء الجالية الليبية في كندا 🇨🇦 🇱🇾",
+    footerPowered:"بإشراف Victory Hour Multimedia Inc.",
+  }
+};
+
+let currentLang = 'en';
+
+function t(key) { return T[currentLang][key] || T['en'][key] || key; }
+
+function switchLang(lang) {
+  currentLang = lang;
+  const root = document.getElementById('html-root');
+  root.setAttribute('lang', T[lang].htmlLang);
+  root.setAttribute('dir', T[lang].dir);
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  renderAll();
+}
+
+function renderAll() {
+  renderTopBar();
+  renderHeader();
+  renderQuickBar();
+  renderHome();
+  renderAnnouncements();
+  renderEvents();
+  renderHistory();
+  renderGallery();
+  renderBusinesses();
+  renderProfessionals();
+  renderLinks();
+  renderFooter();
+}
+</script>
+
+<!-- TOP BAR -->
+<div class="top-bar" id="top-bar"></div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo" onclick="showPage('home')">
+      <div class="logo-emblem"><div class="flag-stripe-blk"></div><div class="flag-stripe-red"></div><div class="flag-stripe-grn"></div></div>
+      <div class="logo-text" id="logo-text"></div>
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+    <nav id="main-nav"></nav>
+    <div class="header-right">
+      <div class="lang-toggle-wrap">
+        <button class="lang-btn active" data-lang="en" onclick="switchLang('en')">EN</button>
+        <button class="lang-btn" data-lang="ar" onclick="switchLang('ar')">عربي</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- QUICK BAR -->
+<div class="quick-bar"><div class="quick-bar-inner" id="quick-bar"></div></div>
+
+<!-- ===== PAGES ===== -->
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <div id="home-hero"></div>
+  <div id="home-banner"></div>
+  <div id="home-main"></div>
+  <div id="home-ann-preview"></div>
+  <div id="home-mosques"></div>
+</div>
+
+<!-- ANNOUNCEMENTS -->
+<div id="page-announcements" class="page">
+  <div id="ann-hero"></div>
+  <div class="section" id="ann-content"></div>
+  <div class="ads-bg" id="ads-section"></div>
+</div>
+
+<!-- EVENTS -->
+<div id="page-events" class="page">
+  <div id="events-hero"></div>
+  <div class="section" id="events-content"></div>
+</div>
+
+<!-- HISTORY -->
+<div id="page-history" class="page">
+  <div id="history-hero"></div>
+  <div class="section" id="history-content"></div>
+</div>
+
+<!-- GALLERY -->
+<div id="page-gallery" class="page">
+  <div id="gallery-hero"></div>
+  <div class="section" id="gallery-content"></div>
+</div>
+
+<!-- BUSINESSES -->
+<div id="page-businesses" class="page">
+  <div id="biz-content"></div>
+</div>
+
+<!-- PROFESSIONALS -->
+<div id="page-professionals" class="page">
+  <div id="pro-content"></div>
+</div>
+
+<!-- LINKS -->
+<div id="page-links" class="page">
+  <div id="links-hero"></div>
+  <div class="links-section"><div class="section" id="links-content"></div></div>
+</div>
+
+<!-- FOOTER -->
+<footer id="footer"></footer>
+
+<script>
+/* ===== NAV & PAGE SWITCH ===== */
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('nav button[data-page]').forEach(b => b.classList.toggle('active', b.dataset.page === id));
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('main-nav').classList.remove('open');
+}
+function toggleMenu() { document.getElementById('main-nav').classList.toggle('open'); }
+
+/* ===== RENDERERS ===== */
+function renderTopBar() {
+  document.getElementById('top-bar').innerHTML = `
+    <div class="top-bar-inner">
+      <div>📍 ${t('topLocation')}</div>
+      <div>
+        <a href="tel:+15190000000">${t('topContact')}</a> &nbsp;|&nbsp;
+        <a href="mailto:${t('topEmail')}">${t('topEmail')}</a> &nbsp;|&nbsp;
+        <span>${t('topGreeting')}</span>
+      </div>
+    </div>`;
+}
+
+function renderHeader() {
+  document.getElementById('logo-text').innerHTML = `<h1>${t('logoLine1')}</h1><p>${t('logoLine2')}</p>`;
+  const pages = ['home','announcements','events','history','gallery','businesses','professionals','links'];
+  const keys  = ['navHome','navAnn','navEvents','navHistory','navGallery','navBiz','navPro','navLinks'];
+  document.getElementById('main-nav').innerHTML = pages.map((p,i) =>
+    `<button data-page="${p}" onclick="showPage('${p}')" ${p==='home'?'class="active"':''}>${t(keys[i])}</button>`
+  ).join('');
+}
+
+function renderQuickBar() {
+  const links = [
+    {label: t('navHome')==='الرئيسية' ? 'Canada.ca':'Canada.ca', href:'https://www.canada.ca', ext:true},
+    {label: t('navHome')==='الرئيسية' ? 'Ontario.ca':'Ontario.ca', href:'https://www.ontario.ca', ext:true},
+    {label: t('navHome')==='الرئيسية' ? 'مدينة وندسور':'City of Windsor', href:'https://www.citywindsor.ca', ext:true},
+    {label: t('navHome')==='الرئيسية' ? 'تيكومزيه':'Tecumseh', href:'https://www.tecumseh.ca', ext:true},
+    {label: t('navHome')==='الرئيسية' ? 'لاسال':'LaSalle', href:'https://www.lasalle.ca', ext:true},
+    {label: t('navHome')==='الرئيسية' ? 'سفارة ليبيا':'Libyan Embassy', href:'https://libyaembassy.ca', ext:true},
+    {label: t('navHome')==='الرئيسية' ? 'السفارة الكندية':'Canadian Embassy Libya', href:'https://www.canadainternational.gc.ca/libya-libye', ext:true},
+  ];
+  document.getElementById('quick-bar').innerHTML =
+    `<span class="qb-label">${t('qbLabel')}</span>` +
+    links.map(l=>`<a class="quick-link" href="${l.href}" target="_blank">${l.label}</a>`).join('');
+}
+
+function renderHome() {
+  // Hero
+  document.getElementById('home-hero').innerHTML = `
+    <div class="hero">
+      <div class="hero-content">
+        <div>
+          <div style="font-family:'Tajawal',sans-serif;font-size:1rem;color:var(--gold-light);margin-bottom:10px;${currentLang==='ar'?'direction:ltr':''}">${t('heroSub')}</div>
+          <h2 style="font-family:var(--heading-font)">${t('heroH2a')} <span>${t('heroH2b')}</span><br>${t('heroH2c')}</h2>
+          <p>${t('heroP')}</p>
+          <div class="hero-btns">
+            <button class="btn btn-gold" onclick="showPage('announcements')">${t('heroBtnAnn')}</button>
+            <button class="btn btn-outline" onclick="showPage('events')">${t('heroBtnEvents')}</button>
+            <button class="btn btn-outline" onclick="showPage('history')">${t('heroBtnHist')}</button>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-card"><div class="num">${t('stat1num')}</div><div class="label">${t('stat1label')}</div></div>
+          <div class="stat-card"><div class="num">${t('stat2num')}</div><div class="label">${t('stat2label')}</div></div>
+          <div class="stat-card" style="grid-column:1/-1">
+            <div class="weather-widget">
+              <h3>${t('wTitle')}</h3>
+              <div style="font-size:2.5rem" id="w-icon">⛅</div>
+              <div class="weather-temp"><span id="w-temp">--</span><sup>°C</sup></div>
+              <div class="weather-city">${t('wCity')}</div>
+              <div class="weather-desc" id="w-desc">...</div>
+              <div class="weather-details">
+                <div class="weather-item">💧 <span id="w-hum">--%</span></div>
+                <div class="weather-item">💨 <span id="w-wind">--</span></div>
+              </div>
+              <div class="weather-note">${t('wNote')}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  loadWeather();
+
+  // Banner
+  document.getElementById('home-banner').innerHTML = `<div class="info-banner">${t('bannerEn')}</div>`;
+
+  // Main two-col
+  document.getElementById('home-main').innerHTML = `
+    <div class="section" style="background:var(--white)">
+      <div class="two-col">
+        <div>
+          <div class="section-header" style="text-align:${currentLang==='ar'?'right':'left'}">
+            <div class="tag">${t('tagCommunity')}</div>
+            <h2>${t('h2Heritage')}</h2>
+            <div class="divider" style="margin:12px 0 0 ${currentLang==='ar'?'auto':'0'}"></div>
+          </div>
+          <p style="color:var(--gray);line-height:1.8;margin-top:16px;font-size:0.96rem">${t('pHeritage1')}</p>
+          <div class="ar-quote" style="margin:20px 0">
+            كونوا يداً واحدة كالبنيان يشد بعضه بعضاً
+            <span class="translation">"Be as one hand, like a structure that strengthens each part."</span>
+          </div>
+          <p style="color:var(--gray);line-height:1.8;font-size:0.96rem">${t('pHeritage2')}</p>
+        </div>
+        <div>
+          <div class="info-card">
+            <h3>${t('cardNewcomerH')}</h3>
+            <p>${t('cardNewcomerP')}</p>
+            <ul>${['nc1','nc2','nc3','nc4','nc5'].map(k=>`<li><span>✓</span>${t(k)}</li>`).join('')}</ul>
+          </div>
+          <div class="info-card">
+            <h3>${t('cardServicesH')}</h3>
+            <ul>${['cs1','cs2','cs3','cs4','cs5'].map(k=>`<li><span>✓</span>${t(k)}</li>`).join('')}</ul>
+          </div>
+        </div>
+      </div>
+    </div>`;
+
+  // Announcements preview
+  document.getElementById('home-ann-preview').innerHTML = `
+    <div style="background:var(--sand);padding:60px 0">
+      <div class="section" style="padding-top:0;padding-bottom:0">
+        <div class="section-header">
+          <div class="tag">${t('tagLatest')}</div>
+          <h2>${t('h2Ann')}</h2>
+          <p>${t('pAnn')}</p>
+          <div class="divider"></div>
+        </div>
+        <div class="announcements-grid">
+          ${annCard('','Community',t('ann1badge'),t('ann1date'),t('ann1h'),t('ann1p'))}
+          ${annCard('urgent','',t('ann2badge'),t('ann2date'),t('ann2h'),t('ann2p'))}
+          ${annCard('event','',t('ann3badge'),t('ann3date'),t('ann3h'),t('ann3p'))}
+        </div>
+        <div style="text-align:center;margin-top:26px">
+          <button class="btn btn-green" onclick="showPage('announcements')">${t('btnViewAll')}</button>
+        </div>
+      </div>
+    </div>`;
+
+  // Mosques
+  document.getElementById('home-mosques').innerHTML = `
+    <div class="section">
+      <div class="section-header">
+        <div class="tag">${t('tagMosques')}</div>
+        <h2>${t('h2Mosques')}</h2>
+        <p>${t('pMosques')}</p>
+        <div class="divider"></div>
+      </div>
+      <div class="mosques-grid">
+        ${mosqueCard(t('mosque1name'),t('mosque1ar'),t('mosque1addr'),t('mosque1p'),t('mosque1link'),'https://www.windsorislamicassociation.com')}
+        ${mosqueCard(t('mosque2name'),t('mosque2ar'),t('mosque2addr'),t('mosque2p'),t('mosque2link'),'#')}
+        ${mosqueCard(t('mosque3name'),t('mosque3ar'),t('mosque3addr'),t('mosque3p'),t('mosque3link'),'#')}
+      </div>
+    </div>`;
+}
+
+function annCard(cls, type, badge, date, h, p) {
+  const t2 = cls || (type==='Community'?'':'');
+  return `<div class="ann-card ${t2}">
+    <div class="ann-meta"><span class="ann-badge">${badge}</span><span class="ann-date">${date}</span></div>
+    <h3>${h}</h3><p>${p}</p></div>`;
+}
+function mosqueCard(name, ar, addr, p, linkText, href) {
+  return `<div class="mosque-card">
+    <div class="mosque-header"><div class="mosque-icon">🕌</div><h3>${name}</h3><p>${ar}</p></div>
+    <div class="mosque-body"><p>${addr}</p><p>${p}</p><a href="${href}" target="_blank">${linkText}</a></div>
+  </div>`;
+}
+
+function renderAnnouncements() {
+  const anns = [
+    {cls:'', badge:t('ann1badge'), date:t('ann1date'), h:t('ann1h'), p:t('ann1p')},
+    {cls:'urgent', badge:t('ann2badge'), date:t('ann2date'), h:t('ann2h'), p:t('ann2p')},
+    {cls:'event', badge:t('ann3badge'), date:t('ann3date'), h:t('ann3h'), p:t('ann3p')},
+    {cls:'', badge:t('ann4badge'), date:t('ann4date'), h:t('ann4h'), p:t('ann4p')},
+    {cls:'', badge:t('ann5badge'), date:t('ann5date'), h:t('ann5h'), p:t('ann5p')},
+    {cls:'', badge:t('ann6badge'), date:t('ann6date'), h:t('ann6h'), p:t('ann6p')},
+  ];
+  document.getElementById('ann-hero').innerHTML = pageHero(t('annPageTag'), t('annPageH'), t('annPageP'));
+  document.getElementById('ann-content').innerHTML =
+    `<div class="announcements-grid">${anns.map(a=>annCard(a.cls,'',a.badge,a.date,a.h,a.p)).join('')}</div>`;
+  document.getElementById('ads-section').innerHTML = `
+    <div class="section" style="padding-top:0;padding-bottom:0">
+      <div class="section-header">
+        <div class="tag">${t('adsTag')}</div>
+        <h2>${t('adsH')}</h2>
+        <p>${t('adsP')}</p>
+        <div class="divider" style="background:linear-gradient(90deg,var(--red),var(--red-light))"></div>
+      </div>
+      <div class="ads-grid">${['ad1','ad2','ad3','ad4','ad5','ad6'].map(k=>`
+        <div class="ad-ph"><div class="icon">🏪</div><strong>${t('adHere')}</strong><span>${t(k)}<br>${t('adSub')}</span></div>`).join('')}
+      </div>
+      <div style="text-align:center;margin-top:28px;padding-bottom:40px">
+        <p style="color:rgba(255,255,255,0.7);margin-bottom:8px">${t('adContact')} <strong style="color:var(--gold-light)">info@libyanwindsor.ca</strong></p>
+        <p style="color:rgba(255,255,255,0.5);font-size:0.8rem">${t('adCharity')}</p>
+      </div>
+    </div>`;
+}
+
+function renderEvents() {
+  const evs = [
+    {m:'Mar',d:'15',y:'2025',h:t('ev1h'),p:t('ev1p'),loc:t('ev1loc'),tag:t('ev1tag')},
+    {m:'Apr',d:'15',y:'2025',h:t('ev2h'),p:t('ev2p'),loc:t('ev2loc'),tag:t('ev2tag')},
+    {m:'Apr',d:'20',y:'2025',h:t('ev3h'),p:t('ev3p'),loc:t('ev3loc'),tag:t('ev3tag')},
+    {m:'May',d:'10',y:'2025',h:t('ev4h'),p:t('ev4p'),loc:t('ev4loc'),tag:t('ev4tag')},
+    {m:'Jun',d:'7', y:'2025',h:t('ev5h'),p:t('ev5p'),loc:t('ev5loc'),tag:t('ev5tag')},
+    {m:'Jul',d:'1', y:'2025',h:t('ev6h'),p:t('ev6p'),loc:t('ev6loc'),tag:t('ev6tag')},
+    {m:'Sep',d:'1', y:'2025',h:t('ev7h'),p:t('ev7p'),loc:t('ev7loc'),tag:t('ev7tag')},
+  ];
+  document.getElementById('events-hero').innerHTML = pageHero(t('eventsTag'), t('eventsH'), t('eventsP'));
+  document.getElementById('events-content').innerHTML = `
+    <div class="events-list">${evs.map(e=>`
+      <div class="event-card">
+        <div class="event-date-box"><div class="month">${e.m}</div><div class="day">${e.d}</div><div class="year">${e.y}</div></div>
+        <div class="event-info"><h3>${e.h}</h3><p>${e.p}</p><div class="location">${e.loc}</div></div>
+        <div class="event-tag">${e.tag}</div>
+      </div>`).join('')}
+    </div>
+    <div style="text-align:center;margin-top:36px;padding:26px;background:var(--sand);border-radius:14px;border:1px solid var(--gold)">
+      <h3 style="font-family:var(--heading-font);color:var(--green-dark);margin-bottom:8px">${t('submitEvent')}</h3>
+      <p style="color:var(--gray);margin-bottom:14px">${t('submitEventP')}</p>
+      <button class="btn btn-green" onclick="alert('Coming soon!')">${t('submitEvent')}</button>
+    </div>`;
+}
+
+function renderHistory() {
+  const tls = t('tl');
+  document.getElementById('history-hero').innerHTML = `
+    <div class="history-hero">
+      <div class="history-hero-content">
+        <div style="font-family:'Tajawal',sans-serif;font-size:1.7rem;direction:rtl;color:var(--gold-light);margin-bottom:10px">تاريخ ليبيا العظيم</div>
+        <h2 style="font-family:var(--heading-font)">${t('histH')}</h2>
+        <div class="flag-bar"></div>
+        <p>${t('histP')}</p>
+      </div>
+    </div>`;
+  document.getElementById('history-content').innerHTML = `
+    <div class="section-header">
+      <div class="tag">${t('histTag')}</div>
+      <h2>${t('histSub')}</h2>
+      <p>${t('histSubP')}</p>
+      <div class="divider"></div>
+    </div>
+    <div class="timeline">
+      ${tls.map((item,i)=>`
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="era-chip">${item.era}</div>
+            <div class="tl-period">${item.period}</div>
+            <h3>${item.h}</h3>
+            <p>${item.p}</p>
+          </div>
+        </div>`).join('')}
+    </div>
+    <div class="ar-quote" style="margin-top:36px">
+      ${currentLang==='ar' ? t('histQuote') : `<span class="translation" style="direction:ltr;display:block;font-size:1rem">"${t('histQuote')}"</span>`}
+    </div>
+    <p style="text-align:center;color:var(--gray);font-size:0.85rem;margin-top:18px">${t('histUnesco')}</p>`;
+}
+
+function renderGallery() {
+  const gphs = t('gphs');
+  const gphs2 = t('gphs2');
+  const emojis = ['🏛️','🕌','🌅','👨‍👩‍👧‍👦','🍽️','🎉','📚','🤝'];
+  const emojis2 = ['🏟️','🕌','🏜️','🌊','🏘️','🏛️','🌿','🏗️'];
+  document.getElementById('gallery-hero').innerHTML = pageHero(t('galleryTag'), t('galleryH'), t('galleryP'));
+  document.getElementById('gallery-content').innerHTML = `
+    <div style="text-align:center;margin-bottom:28px;padding:18px;background:var(--sand);border-radius:12px;border:1px dashed var(--gold)">
+      <p style="color:var(--green-dark);font-weight:600">${t('galleryNote')}</p>
+      <p style="color:var(--gray);font-size:0.85rem;margin-top:5px">${t('gallerySubmit')}</p>
+    </div>
+    <h3 style="font-family:var(--heading-font);color:var(--green-dark);margin-bottom:18px">${t('gallerySec1')}</h3>
+    <div class="gallery-grid">${gphs.map((g,i)=>`<div class="gallery-ph"><span>${emojis[i]}</span>${g}</div>`).join('')}</div>
+    <h3 style="font-family:var(--heading-font);color:var(--green-dark);margin-bottom:18px;margin-top:36px">${t('gallerySec2')}</h3>
+    <div class="gallery-grid">${gphs2.map((g,i)=>`<div class="gallery-ph"><span>${emojis2[i]}</span>${g}</div>`).join('')}</div>`;
+}
+
+function renderBusinesses() {
+  document.getElementById('biz-content').innerHTML = phPage(t('bizIcon'), t('bizH'), t('bizP'), t('bizItems'), t('bizBtn'), t('bizNote'));
+}
+function renderProfessionals() {
+  document.getElementById('pro-content').innerHTML = phPage(t('proIcon'), t('proH'), t('proP'), t('proItems'), t('proBtn'), t('proNote'));
+}
+
+function phPage(icon, h, p, items, btn, note) {
+  return `<div class="ph-page"><div class="ph-content">
+    <div class="ph-icon">${icon}</div>
+    <h2>${h}</h2>
+    <p>${p}</p>
+    <ul class="ph-list">${items.map(i=>`<li>${i}</li>`).join('')}</ul>
+    <button class="submit-btn" onclick="alert('${currentLang==='ar'?'قريباً':'Coming soon!'}')">${btn}</button>
+    <p style="color:var(--gray);font-size:0.78rem;margin-top:14px">${note}</p>
+  </div></div>`;
+}
+
+function renderLinks() {
+  const isAr = currentLang === 'ar';
+  const fedLinks = [
+    {icon:'🏛️',strong:'Government of Canada',sub:'canada.ca',href:'https://www.canada.ca'},
+    {icon:'🛂',strong:'Immigration, Refugees & Citizenship',sub:'IRCC — visas, PR, citizenship',href:'https://www.ircc.canada.ca'},
+    {icon:'💰',strong:'Canada Revenue Agency',sub:isAr?'الضرائب والمزايا':'Taxes, benefits & credits',href:'https://www.cra-arc.gc.ca'},
+    {icon:'🪪',strong:'Service Canada',sub:isAr?'SIN، EI، CPP':'SIN, EI, CPP, OAS services',href:'https://www.servicecanada.gc.ca'},
+    {icon:'💼',strong:'Employment & Social Development',sub:isAr?'فرص العمل والبرامج':'Jobs, training & social programs',href:'https://www.canada.ca/en/employment-social-development.html'},
+    {icon:'🏥',strong:'Health Canada',sub:isAr?'الصحة الفيدرالية':'Federal health programs',href:'https://www.canada.ca/en/health-canada.html'},
+  ];
+  const ontLinks = [
+    {icon:'🏢',strong:'Government of Ontario',sub:'ontario.ca',href:'https://www.ontario.ca'},
+    {icon:'💚',strong:'OHIP — Ontario Health Insurance',sub:isAr?'التسجيل في OHIP':'Register for Ontario health card',href:'https://www.ontario.ca/page/apply-ohip-and-get-health-card'},
+    {icon:'🪪',strong:'Ontario Driver\'s Licence & Photo ID',sub:isAr?'رخصة القيادة':'Driver\'s licence & photo ID',href:'https://www.ontario.ca/page/get-ontario-photo-card'},
+    {icon:'🤝',strong:'Ontario Newcomer Services',sub:isAr?'خدمات الوافدين':'Settlement help for newcomers',href:'https://www.ontario.ca/page/newcomers'},
+    {icon:'🎓',strong:'Ontario Schools Directory',sub:isAr?'دليل المدارس':'Find schools in your area',href:'https://www.ontario.ca/page/find-school'},
+    {icon:'📋',strong:'Ontario Works',sub:isAr?'المساعدة المالية':'Financial assistance programs',href:'https://www.ontario.ca/page/applying-ontario-works'},
+  ];
+  const localLinks = [
+    {icon:'🏙️',strong:isAr?'مدينة وندسور':'City of Windsor',sub:'citywindsor.ca',href:'https://www.citywindsor.ca'},
+    {icon:'🏘️',strong:isAr?'بلدة تيكومزيه':'Town of Tecumseh',sub:'tecumseh.ca',href:'https://www.tecumseh.ca'},
+    {icon:'🌿',strong:isAr?'بلدة لاسال':'Town of LaSalle',sub:'lasalle.ca',href:'https://www.lasalle.ca'},
+    {icon:'🌾',strong:isAr?'بلدة إيسكس':'Town of Essex',sub:'essex.ca',href:'https://www.essex.ca'},
+    {icon:'💧',strong:isAr?'بلدية ليكشور':'Municipality of Lakeshore',sub:'lakeshore.ca',href:'https://www.lakeshore.ca'},
+    {icon:'🗺️',strong:isAr?'مقاطعة إيسكس':'Essex County',sub:'countyofessex.on.ca',href:'https://www.countyofessex.on.ca'},
+  ];
+  const libLinks = [
+    {icon:'🇱🇾',strong:isAr?'سفارة ليبيا في أوتاوا':'Embassy of Libya in Ottawa',sub:isAr?'جوازات السفر والخدمات القنصلية':'Passports, consular services',href:'https://libyaembassy.ca'},
+    {icon:'🇨🇦',strong:isAr?'السفارة الكندية في ليبيا':'Canadian Embassy in Libya',sub:isAr?'طرابلس — الخدمات القنصلية':'Tripoli — Canadian consular help',href:'https://www.canadainternational.gc.ca/libya-libye'},
+    {icon:'🌍',strong:isAr?'بعثة الأمم المتحدة في ليبيا':'UN Support Mission in Libya',sub:'UNSMIL',href:'https://unsmil.unmissions.org'},
+  ];
+  const mosqueLinks = [
+    {icon:'🕌',strong:'Windsor Islamic Association',sub:isAr?'المركز الإسلامي الرئيسي':'Main Islamic centre, Windsor',href:'https://www.windsorislamicassociation.com'},
+    {icon:'🕌',strong:isAr?'الجمعية الإسلامية':'Islamic Society of Windsor',sub:isAr?'خدمات الجمعية الإسلامية':'Community mosque services',href:'#'},
+    {icon:'🕌',strong:isAr?'مركز النور الإسلامي':'Al-Noor Islamic Centre',sub:isAr?'مجتمع وندسور الإسلامي':'Windsor Islamic community',href:'#'},
+    {icon:'📍',strong:'Islamic Finder',sub:isAr?'أوقات الصلاة والمساجد':'Prayer times & mosque finder',href:'https://www.islamicfinder.org'},
+  ];
+  const eduLinks = [
+    {icon:'📚',strong:'Windsor Catholic School Board',sub:'wcdsb.ca',href:'https://www.wcdsb.ca'},
+    {icon:'📖',strong:'Greater Essex County DSB',sub:'gecdsb.on.ca',href:'https://www.gecdsb.on.ca'},
+    {icon:'🏫',strong:'University of Windsor',sub:'uwindsor.ca',href:'https://www.uwindsor.ca'},
+    {icon:'🎒',strong:'St. Clair College',sub:'stclaircollege.ca',href:'https://www.stclaircollege.ca'},
+    {icon:'💼',strong:'Work in Windsor-Essex',sub:'workinwindsor.ca',href:'https://www.workinwindsor.ca'},
+    {icon:'🤲',strong:isAr?'خدمات الاستقرار':'Windsor-Essex Settlement',sub:'WESCC',href:'https://www.wescc.ca'},
+  ];
+  function linkGroup(header, links) {
+    return `<div class="links-group">
+      <h3>${header}</h3>
+      <div class="links-grid">${links.map(l=>`
+        <a class="link-card" href="${l.href}" target="_blank">
+          <div class="link-icon">${l.icon}</div>
+          <div><strong>${l.strong}</strong><span>${l.sub}</span></div>
+          <div class="link-arrow">→</div>
+        </a>`).join('')}
+      </div></div>`;
+  }
+  document.getElementById('links-hero').innerHTML = pageHero(t('linksTag'), t('linksH'), t('linksP'));
+  document.getElementById('links-content').innerHTML =
+    linkGroup(t('lg1'), fedLinks) +
+    linkGroup(t('lg2'), ontLinks) +
+    linkGroup(t('lg3'), localLinks) +
+    linkGroup(t('lg4'), libLinks) +
+    linkGroup(t('lg5'), mosqueLinks) +
+    linkGroup(t('lg6'), eduLinks);
+}
+
+function renderFooter() {
+  const pages = ['home','announcements','events','history','gallery','businesses','professionals'];
+  const keys  = ['navHome','navAnn','navEvents','navHistory','navGallery','navBiz','navPro'];
+  document.getElementById('footer').innerHTML = `
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>${t('footerBrandH')}</h3>
+        <p>${t('footerBrandP')}</p>
+        <p style="color:#ff6670;font-size:0.78rem">🌙 ${t('footerCharity')}</p>
+      </div>
+      <div class="footer-col">
+        <h4>${t('footerNav')}</h4>
+        <ul>${pages.map((p,i)=>`<li><a onclick="showPage('${p}')">${t(keys[i])}</a></li>`).join('')}</ul>
+      </div>
+      <div class="footer-col">
+        <h4>${t('footerGov')}</h4>
+        <ul>
+          <li><a href="https://www.canada.ca" target="_blank">Canada.ca</a></li>
+          <li><a href="https://www.ontario.ca" target="_blank">Ontario.ca</a></li>
+          <li><a href="https://www.citywindsor.ca" target="_blank">${currentLang==='ar'?'مدينة وندسور':'City of Windsor'}</a></li>
+          <li><a href="https://www.tecumseh.ca" target="_blank">${currentLang==='ar'?'تيكومزيه':'Tecumseh'}</a></li>
+          <li><a href="https://www.lasalle.ca" target="_blank">${currentLang==='ar'?'لاسال':'LaSalle'}</a></li>
+          <li><a href="https://libyaembassy.ca" target="_blank">${currentLang==='ar'?'سفارة ليبيا':'Libyan Embassy'}</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>${t('footerContact')}</h4>
+        <ul>
+          <li><a href="mailto:info@libyanwindsor.ca">info@libyanwindsor.ca</a></li>
+          <li><a href="tel:+15190000000">+1 (519) 000-0000</a></li>
+          <li><a href="#">Windsor, Ontario, Canada</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>${t('footerCopy')}</div>
+      <div>${t('footerBuilt')}</div>
+      <div><a href="https://www.victoryhourmedia.com" target="_blank">${t('footerPowered')}</a></div>
+    </div>`;
+}
+
+function pageHero(tag, h, p) {
+  return `<div style="background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 40%,var(--green-dark) 100%);padding:56px 24px;color:white;text-align:center">
+    <div class="tag" style="background:var(--gold);color:#111;border-color:var(--gold)">${tag}</div>
+    <h2 style="font-family:var(--heading-font);font-size:2.4rem;color:white;margin:10px 0 8px">${h}</h2>
+    <p style="color:rgba(255,255,255,0.85);max-width:580px;margin:0 auto;line-height:1.7">${p}</p>
+  </div>`;
+}
+
+/* ===== WEATHER ===== */
+async function loadWeather() {
+  try {
+    const r = await fetch('https://wttr.in/Windsor,Ontario,Canada?format=j1');
+    const d = await r.json();
+    const c = d.current_condition[0];
+    const icons = {113:'☀️', 116:'🌤️', 119:'⛅', 122:'☁️', 185:'🌦️', 200:'⛈️', 227:'❄️', 230:'❄️', 248:'🌫️', 260:'🌫️', 266:'🌧️', 281:'🌧️', 284:'🌧️', 293:'🌧️', 296:'🌧️', 299:'🌧️', 302:'🌧️', 305:'🌧️', 308:'🌧️', 311:'🌨️', 314:'🌨️', 317:'🌨️', 320:'🌨️', 323:'❄️', 326:'❄️', 329:'❄️', 332:'❄️', 335:'❄️', 338:'❄️', 350:'🌧️', 353:'🌧️', 356:'🌧️', 359:'🌧️', 362:'🌨️', 365:'🌨️', 368:'🌨️', 371:'❄️', 374:'🌨️', 377:'🌨️', 386:'⛈️', 389:'⛈️', 392:'⛈️', 395:'❄️'};
+    const code = parseInt(c.weatherCode);
+    const icon = icons[code] || '⛅';
+    const wi = document.getElementById('w-icon'); if(wi) wi.textContent = icon;
+    const wt = document.getElementById('w-temp'); if(wt) wt.textContent = c.temp_C;
+    const wd = document.getElementById('w-desc'); if(wd) wd.textContent = c.weatherDesc[0].value;
+    const wh = document.getElementById('w-hum'); if(wh) wh.textContent = c.humidity + '%';
+    const ww = document.getElementById('w-wind'); if(ww) ww.textContent = c.windspeedKmph + ' km/h';
+  } catch(e) {}
+}
+
+/* ===== INIT ===== */
+renderAll();
+</script>
+</body>
+</html>
